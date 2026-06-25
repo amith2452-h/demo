@@ -14,7 +14,7 @@ test('Verify Loan Approval in ParaBank - Chrome', async ({ loginPage, loanPage }
   await loanPage.openRequestLoan();
   await loanPage.page.waitForTimeout(3000);
 
-  await loanPage.requestLoan('100', '100', 0);
+  await loanPage.requestLoan('100', '10', 0);
   await loanPage.page.waitForTimeout(3000);
 
   await loanPage.expectLoanStatusApprovedOrDenied();
