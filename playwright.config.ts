@@ -32,8 +32,8 @@ export default defineConfig({
   use: {
       trace: 'on-first-retry',
       screenshot: 'on',
-      headless: false, // or true
-    
+      headless: process.env.CI ? true : false,
+  
     /* Base URL to use in actions like `await page.goto('')`. */
     baseURL: 'http://localhost:3000',
 
