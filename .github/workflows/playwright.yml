@@ -17,8 +17,14 @@ jobs:
       run: npm ci
     - name: Install Playwright Browsers
       run: npx playwright install --with-deps
+    - name: Install system dependencies for headless testing
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y xvfb libxkbcommon0 libxkbcommon-x11-0
     - name: Run Playwright tests
-      run: npx playwright test
+      run: xvfb-run npx playwright test
+      env:
+        DISPLAY: :99
     - uses: actions/upload-artifact@v4
       if: ${{ !cancelled() }}
       with:
